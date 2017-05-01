@@ -9,26 +9,31 @@ public:
     Field() {};
     Field(string request);
     ~Field(){};
-    T getContent();
+    T getContent() const;
     void addValidator(Validator<T>* validator);
     void refill();
     bool getValidity();
     void validate();
+    void printField();
+    void emptySet(bool b);
 private:
     T m_content;
     Validator<T> * m_validator;
     bool m_empty = true;
 };
 
-template <class T>
-Field<T>::Field(string request) : NTField(request)
+template<class T>
+void Field<T>::emptySet(bool b)
 {
-//    cin >> m_content;
-//    m_empty = false;
+    m_empty = b;
 }
 
 template <class T>
-T Field<T>::getContent()
+Field<T>::Field(string request) : NTField(request)
+{}
+
+template <class T>
+T Field<T>::getContent() const
 {
     T temp = m_content;
     return temp;
@@ -61,9 +66,8 @@ bool Field<T>::getValidity()
     
     validate();
     
-    bool b = m_validator -> isValid();
+    bool b = m_validator -> isValid(m_request, getContent());
     validSet(b);
-    cout << b << endl;
     return b;
 }
 
@@ -74,25 +78,15 @@ void Field<T>::validate()
 }
 
 template <class T>
-std::ostream & operator << (std::ostream & ostr, const Field<T> * field)
+void Field<T>::printField()
 {
-//    cout << "field print called" << endl;
-    string content;
-    //FIXME: getContent;
-    ostr << (field->getValidity() ? field->getContent() : "Error: Invalid Field!") << endl;
-    return ostr;
+    if (getValidity())
+        cout << m_request << ": " << *this;
 }
 
-
-
-
-
-
-
-//template <>
-//class Field<string> : public Field
-//{
-//public:
-//private:
-//    string m_content;
-//}
+template <class T>
+std::ostream & operator << (std::ostream & ostr, const Field<T> & field)
+{
+    ostr << field.getContent() << endl;
+    return ostr;
+}

@@ -6,16 +6,26 @@ class FormValidator : public Validator<int>
 {
 public:
     FormValidator(){};
-    FormValidator(string errorMessage, const T & f1, const U & f2, const V & f3);
+    FormValidator(string errorMessage, Field<int> * f1, Field<int> * f2,Field<int> * f3);
+    bool isValid();
 protected:
-    T m_field1;
-    U m_field2;
-    V m_field3;
+    vector<Field<int> *> m_fields;
 };
 
 template <class T, class U, class V>
-FormValidator<T,U,V>::FormValidator(string errorMessage, const T & f1, const U & f2, const V & f3) : m_field1(f1), m_field2(f2), m_field3(f3)
+FormValidator<T,U,V>::FormValidator(string errorMessage, Field<int> * f1, Field<int> * f2, Field<int> * f3)
 {
+    m_fields.push_back(f1);
+    m_fields.push_back(f2);
+    m_fields.push_back(f3);
     m_errorMessage = errorMessage;
 }
 
+template <class T, class U, class V>
+bool FormValidator<T,U,V>::isValid()
+{
+    if (!m_valid)
+        cout << "Error: " << m_errorMessage << endl;
+    
+    return m_valid;
+}

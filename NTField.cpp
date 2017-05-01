@@ -1,15 +1,12 @@
 #include "NTField.h"
 
 NTField::NTField(string request) : m_request(request)
-{
-//    cout << m_request << endl;
-}
+{}
 
-void NTField::validSet(bool b)
+void NTField::validSet(bool b) 
 {
     m_valid = b;
 }
-
 
 NTField NTField::get()
 {
@@ -27,3 +24,5 @@ void NTField::refill()
 void NTField::validate()
 {}
 
+void NTField::printField()
+{}

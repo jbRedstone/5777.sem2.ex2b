@@ -6,19 +6,17 @@ class Validator : public NTValidator
 {
 public:
     virtual void checkValidity(T content) {}; // set bool valid at end of function
-//    void checkValidity(NTField field);
-//    Validator get() {return *this;};
-    bool isValid();
+    bool isValid(string request, T content);
 protected:
     bool m_valid = false;
-    string m_errorMessage;
+    string m_errorMessage = "";
 };
 
 template <class T>
-bool Validator<T>::isValid()
+bool Validator<T>::isValid(string request, T content)
 {
     if (!m_valid)
-        cout << m_errorMessage << endl;
+        cout << "Error: " << request << ": " << content << " - " << m_errorMessage << endl;
 
     return m_valid;
 }

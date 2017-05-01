@@ -12,10 +12,6 @@ using std::endl;
 using std::vector;
 using std::ostream;
 
-
-//#include "NTField.h"
-
-
 class NTValidator
 {
 public:
@@ -23,4 +19,5 @@ public:
     ~NTValidator();
     NTValidator get();
     virtual bool isValid();
+    virtual void checkValidity();
 };

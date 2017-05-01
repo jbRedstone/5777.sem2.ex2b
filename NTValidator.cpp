@@ -13,6 +13,8 @@ NTValidator NTValidator::get()
 
 bool NTValidator::isValid()
 {
-    cout << "check at NT" << endl;
     return true;
 }
+
+void NTValidator::checkValidity()
+{}

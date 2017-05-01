@@ -2,10 +2,6 @@
 //#include "NTField.h"
 #include "Field.h"
 
-//using std::vector;
-
-//template <> class Field<class T>;
-//class NTField;
 
 class Form
 {
@@ -14,7 +10,7 @@ public:
     void fillForm(); // allows the filling of empty or invalid fields in the form
     bool validateForm(); // returns true if the form is valid
     size_t numOfFields() const;
-    const NTField * getField(size_t i) const;
+    NTField * getField(size_t i) const;
     void addValidator(NTValidator * validator); // adds validator to the vector
 
 private:

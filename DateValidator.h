@@ -54,34 +54,29 @@ void DateValidator<T>::checkValidity(int content)
 template <class T>
 int DateValidator<T>::currentYear()
 {
-//    using clock = std::chrono::system_clock;
-//    auto now = clock::to_time_t(clock::now());
-//    std::tm calendarTime = {};
-//    localtime_s(&calendarTime, &now);
-//    return calendarTime.tm_year + 1900;
-    return 2017;
+    using clock = std::chrono::system_clock;
+    auto now = clock::to_time_t(clock::now());
+    std::tm calendarTime = {};
+    localtime_s(&calendarTime, &now);
+    return calendarTime.tm_year + 1900;
 }
 
 template <class T>
 int DateValidator<T>::currentMonth()
 {
-//    using clock = std::chrono::system_clock;
-//    auto now = clock::to_time_t(clock::now());
-//    std::tm calendarTime = {};
-//    localtime_s(&calendarTime, &now);
-//    return calendarTime.tm_mon;
-    
-    return 5;
+    using clock = std::chrono::system_clock;
+    auto now = clock::to_time_t(clock::now());
+    std::tm calendarTime = {};
+    localtime_s(&calendarTime, &now);
+    return calendarTime.tm_mon;
 }
 
 template <class T>
 int DateValidator<T>::currentDay()
 {
-//    using clock = std::chrono::system_clock;
-//    auto now = clock::to_time_t(clock::now());
-//    std::tm calendarTime = {};
-//    localtime_s(&calendarTime, &now);
-//    return calendarTime.tm_mday;
-    
-    return 1;
+    using clock = std::chrono::system_clock;
+    auto now = clock::to_time_t(clock::now());
+    std::tm calendarTime = {};
+    localtime_s(&calendarTime, &now);
+    return calendarTime.tm_mday;
 }

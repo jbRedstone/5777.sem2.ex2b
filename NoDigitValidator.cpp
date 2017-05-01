@@ -1,5 +1,5 @@
 #include "NoDigitValidator.h"
-#include <algorithm>
+
 NoDigitValidator::NoDigitValidator()
 {
     m_errorMessage = "Can't be negative";

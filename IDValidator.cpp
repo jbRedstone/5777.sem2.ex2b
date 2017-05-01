@@ -1,28 +1,44 @@
 #include "IDValidator.h"
 
+IDValidator::IDValidator()
+{
+    m_errorMessage = "Invalid ID";
+}
+
+void IDValidator::collectDigits(vector<int> & digits, uint32_t num)
+{
+    if (num > 9)
+        collectDigits(digits,num/10);
+    
+    digits.push_back(num % 10);
+}
+
 void IDValidator::checkValidity(uint32_t content)
 {
-//    int i = 1, c = content;
-//    while (c > 10)
-//    {
-//        c /= 10;
-//        i++;
-//    }
-//    
-//    if (i != 9)
-//    {
-//        m_valid = false;
-//        return;
-//    }
-//    
-//
-//    
-//    
-//        int counter = 0, incNum;
-//        for (i in id) {
-//            incNum = Number(id[i]) * ((i % 2) + 1);//multiply digit by 1 or 2
-//            counter += (incNum > 9) ? incNum - 9 : incNum;//sum the digits up and add to counter
-//        }
-//        return (counter % 10 == 0);
-//    }
+    vector<int> digits;
+    
+    collectDigits(digits, content);
+    
+    if (digits.size() != 9)
+    {
+        m_valid = false;
+        return;
+    }
+    
+    int sum = 0;
+    
+    for (size_t i = 0; i <= 7; i++)
+    {
+        int mult = (i%2 == 0? 1:2);
+        
+        sum += (digits[i]*mult);
+        
+        //add digit times multiplier if its a single digit number
+        //if its a double digit number, it can't be greater than 20, so the sume of its digits is itself minus 9
+        if ((digits[i]*mult) >= 10)
+            sum -= 9;
+    }
+    
+    m_valid = ((sum + digits[8])%10) == 0;
+    
 }

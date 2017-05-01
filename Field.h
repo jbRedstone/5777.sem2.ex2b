@@ -74,12 +74,12 @@ void Field<T>::validate()
 }
 
 template <class T>
-std::ostream & operator << (std::ostream & ostr, const Field<T> & field)
+std::ostream & operator << (std::ostream & ostr, const Field<T> * field)
 {
 //    cout << "field print called" << endl;
     string content;
     //FIXME: getContent;
-    ostr << (field.getValidity() ? field.getContent() : "Error: Invalid Field!") << endl;
+    ostr << (field->getValidity() ? field->getContent() : "Error: Invalid Field!") << endl;
     return ostr;
 }
 

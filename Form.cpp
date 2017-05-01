@@ -59,7 +59,7 @@ const NTField * Form::getField(size_t i) const
     return m_fields[i];
 }
 
-ostream & operator<< (ostream & ostr, const Form &form)
+ostream & operator<< (ostream & ostr, const Form & form)
 {
     cout << "form << called" << endl;
     

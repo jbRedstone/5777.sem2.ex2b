@@ -1,15 +1,15 @@
 #pragma once
-#include "Validator.h"
+#include "FormValidator.h"
 
-template <class T>
-class RoomValidator : public Validator<int>
+template <class T, class U, class V>
+class RoomValidator : public FormValidator<Field<int>, Field<int>, Field<int>>
 {
 public:
     void checkValidity(int content);
 };
 
-template <class T>
-void RoomValidator<T>::checkValidity(int content)
+template <class T, class U, class V>
+void RoomValidator<T,U,V>::checkValidity(int content)
 {
-    //m_valid = logic
+    m_valid = (m_field1.getContent() == (m_field2.getContent() + m_field3.getContent()));
 }

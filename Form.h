@@ -22,4 +22,4 @@ private:
     vector<NTValidator *> m_validators;
 };
 
-ostream & operator<< (ostream & ostr, const Form &form);
+ostream & operator<< (ostream & ostr, const Form & form);
